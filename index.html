@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jiajun Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#f5f5f5; color:#222; }
+    header { background:#111827; color:#fff; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    header .logo { font-weight:700; font-size:20px; }
+    header nav a { color:#e5e7eb; margin-left:16px; text-decoration:none; font-size:14px; }
+    header nav a:hover { color:#fff; }
+
+    .hero { padding:40px 24px 24px; background:#111827; color:#fff; text-align:center; }
+    .hero h1 { font-size:32px; margin-bottom:12px; }
+    .hero p { font-size:15px; max-width:480px; margin:0 auto 20px; color:#d1d5db; }
+    .hero .cta { display:inline-block; padding:10px 20px; border-radius:999px; background:#22c55e; color:#111827; text-decoration:none; font-weight:600; font-size:14px; }
+    .hero .cta:hover { background:#16a34a; }
+
+    .container { max-width:1000px; margin:0 auto; padding:24px; }
+
+    h2.section-title { font-size:22px; margin-bottom:16px; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:18px; }
+
+    .card { background:#fff; border-radius:14px; padding:14px; box-shadow:0 10px 20px rgba(15,23,42,0.08); display:flex; flex-direction:column; }
+    .card img { width:100%; border-radius:10px; margin-bottom:10px; background:#e5e7eb; height:160px; object-fit:cover; }
+    .card h3 { font-size:16px; margin-bottom:4px; }
+    .card p.desc { font-size:13px; color:#4b5563; margin-bottom:8px; }
+    .card .price { font-weight:700; margin-bottom:10px; }
+    .card button { padding:8px 10px; border-radius:999px; border:none; cursor:pointer; font-size:13px; font-weight:500; background:#111827; color:#fff; }
+    .card button:hover { opacity:0.9; }
+
+    .info { margin-top:32px; font-size:13px; color:#4b5563; line-height:1.6; }
+
+    footer { text-align:center; padding:16px; font-size:12px; color:#6b7280; }
+
+    @media (max-width:600px){
+      .hero h1 { font-size:24px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Jiajun Shop</div>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Jiajun’s Store</h1>
+    <p>High-quality products with honest pricing. This is a demo catalogue website built with GitHub Pages.</p>
+    <a class="cta" href="#products">View Products</a>
+  </section>
+
+  <main class="container">
+    <h2 id="products" class="section-title">Featured Products</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300?text=Product+1" alt="Product 1" />
+        <h3>Product Name 1</h3>
+        <p class="desc">Short description of your product. Material, size, or key features.</p>
+        <div class="price">$39.99</div>
+        <button type="button">Contact to Buy</button>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300?text=Product+2" alt="Product 2" />
+        <h3>Product Name 2</h3>
+        <p class="desc">Explain why this item is special. You can change everything here.</p>
+        <div class="price">$59.99</div>
+        <button type="button">Contact to Buy</button>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300?text=Product+3" alt="Product 3" />
+        <h3>Product Name 3</h3>
+        <p class="desc">Use this place to show your main selling points.</p>
+        <div class="price">$24.99</div>
+        <button type="button">Contact to Buy</button>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300?text=Product+4" alt="Product 4" />
+        <h3>Product Name 4</h3>
+        <p class="desc">Another item. You can easily duplicate this card for more products.</p>
+        <div class="price">$89.99</div>
+        <button type="button">Contact to Buy</button>
+      </div>
+
+    </div>
+
+    <section id="contact" class="info">
+      <h2 class="section-title">Contact</h2>
+      <p>If you are interested in any product, please contact:</p>
+      <p>Email: <strong>your-email@example.com</strong></p>
+      <p>Instagram / WeChat: <strong>@yourshop</strong></p>
+      <p>You can change this text to your real contact information.</p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Jiajun Shop. All rights reserved.
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>
