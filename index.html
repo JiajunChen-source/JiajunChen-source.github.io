@@ -1,1 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jiajun Gallery | 图片展示网站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:#f3f4f6; color:#111827;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      background:#000;
+      color:#fff;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .logo { font-weight:700; font-size:20px; }
+    nav a { margin-left:16px; font-size:14px; color:#e5e7eb; }
+    nav a:hover { color:#ffffff; }
+
+    .hero {
+      padding:26px 20px 18px;
+      text-align:center;
+      background:#000;
+      color:#fff;
+    }
+    .hero h1 { font-size:28px; margin-bottom:8px; }
+    .hero p { font-size:14px; color:#d1d5db; max-width:520px; margin:0 auto; }
+
+    .container {
+      max-width:1100px;
+      margin:0 auto;
+      padding:22px 18px 40px;
+    }
+
+    .section-title {
+      font-size:20px;
+      margin-bottom:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .section-title small { font-size:12px; color:#6b7280; }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:14px;
+    }
+
+    .card {
+      background:#ffffff;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 10px 20px rgba(15,23,42,0.08);
+      cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .card img {
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      display:block;
+    }
+    .card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 18px 30px rgba(15,23,42,0.18);
+    }
+    .card-body {
+      padding:10px 12px 12px;
+      font-size:13px;
+    }
+    .card-title { font-weight:600; margin-bottom:4px; }
+    .card-desc { color:#4b5563; font-size:12px; }
+
+    .info {
+      margin-top:26px;
+      font-size:13px;
+      color:#4b5563;
+      line-height:1.6;
+    }
+
+    /* Lightbox 大图预览 */
+    .lightbox {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.85);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease;
+      z-index:50;
+    }
+    .lightbox.open {
+      opacity:1;
+      pointer-events:auto;
+    }
+    .lightbox img {
+      max-width:92vw;
+      max-height:88vh;
+      border-radius:12px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.6);
+    }
+    .lightbox-caption {
+      color:#e5e7eb;
+      text-align:center;
+      margin-top:10px;
+      font-size:13px;
+    }
+    .lightbox-close {
+      position:fixed;
+      top:16px;
+      right:18px;
+      font-size:24px;
+      color:#e5e7eb;
+      cursor:pointer;
+    }
+
+    footer {
+      text-align:center;
+      padding:14px 10px 22px;
+      font-size:12px;
+      color:#6b7280;
+    }
+
+    @media (max-width:600px){
+      .hero h1 { font-size:22px; }
+      header { flex-direction:column; align-items:flex-start; gap:6px; }
+      nav a { margin-left:0; margin-right:12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Jiajun Gallery</div>
+    <nav>
+      <a href="#gallery">图片</a>
+      <a href="#info">说明</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Jiajun 图片展示站</h1>
+    <p>这里专门用来展示你的商品、旅行照片、作品集等。以后只要往这里添加图片，就能给别人看你的所有内容。</p>
+  </section>
+
+  <main class="container">
+    <div class="section-title" id="gallery">
+      <span>图片图库 Photo Gallery</span>
+      <small>点击图片可以放大查看</small>
+    </div>
+
+    <div class="grid">
+      <!-- ==== 下面是图片卡片示例，替换 src 即可 ==== -->
+
+      <div class="card" data-title="示例图片 1" data-desc="你可以在这里写图片说明，例如：商品A · 型号X。" >
+        <img src="https://via.placeholder.com/600x400?text=Image+1" alt="图片1">
+        <div class="card-body">
+          <div class="card-title">示例图片 1</div>
+          <div class="card-desc">在这里写这张图片的简单说明。</div>
+        </div>
+      </div>
+
+      <div class="card" data-title="示例图片 2" data-desc="例如：高达模型 · 侧面展示。">
+        <img src="https://via.placeholder.com/600x400?text=Image+2" alt="图片2">
+        <div class="card-body">
+          <div class="card-title">示例图片 2</div>
+          <div class="card-desc">你可以把它当作商品图、作品图、生活照。</div>
+        </div>
+      </div>
+
+      <div class="card" data-title="示例图片 3" data-desc="例如：护肤品套装 · 桌面拍摄。">
+        <img src="https://via.placeholder.com/600x400?text=Image+3" alt="图片3">
+        <div class="card-body">
+          <div class="card-title">示例图片 3</div>
+          <div class="card-desc">需要更多图片，只要复制这一块 card 再改就行。</div>
+        </div>
+      </div>
+
+      <div class="card" data-title="示例图片 4" data-desc="例如：衣服细节 · 近拍。">
+        <img src="https://via.placeholder.com/600x400?text=Image+4" alt="图片4">
+        <div class="card-body">
+          <div class="card-title">示例图片 4</div>
+          <div class="card-desc">支持手机自适应，布局会自动变成两列或一列。</div>
+        </div>
+      </div>
+
+      <!-- 你可以复制上面的 <div class="card"> ... </div> 添加更多图片 -->
+
+    </div>
+
+    <section class="info" id="info">
+      <h2 style="font-size:18px; margin:24px 0 8px;">如何替换为你自己的图片？</h2>
+      <p>1️⃣ 把你的图片上传到这个仓库：点击页面上方 <b>Add file → Upload files</b>，把图片拖进去，然后 Commit 保存。</p>
+      <p>2️⃣ 上传后点进图片文件，点击右上角 <b>Download / View raw</b>，复制图片的链接。</p>
+      <p>3️⃣ 回到 <b>index.html</b> 编辑，把上面示例里的
+        <code>src="https://via.placeholder.com/600x400?text=Image+1"</code>
+        换成你自己的图片链接就可以了。</p>
+      <p>4️⃣ 想多放几张，只要复制一整块 <code>&lt;div class="card"&gt;...&lt;/div&gt;</code> 再改标题和描述。</p>
+    </section>
+  </main>
+
+  <!-- Lightbox 大图预览结构 -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close" id="lightboxClose">×</div>
+    <div>
+      <img id="lightboxImg" src="" alt="">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Jiajun Gallery · Built with GitHub Pages
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const cards = document.querySelectorAll(".card");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        const img = card.querySelector("img");
+        const title = card.dataset.title || "";
+        const desc = card.dataset.desc || "";
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = title + (desc ? " · " + desc : "");
+        lightbox.classList.add("open");
+      });
+    });
+
+    lightboxClose.addEventListener("click", () => {
+      lightbox.classList.remove("open");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("open");
+      }
+    });
+  </script>
+</body>
+</html>
 
